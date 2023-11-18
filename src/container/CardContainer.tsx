@@ -9,9 +9,9 @@ const CardContainer = () => {
   if (loading) return <p role="status">Loading...</p>;
 
   return (
-    <div className="container">
+    <main className="container">
       <Card item={data} />
-    </div>
+    </main>
   );
 };
 

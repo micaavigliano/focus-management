@@ -41,12 +41,19 @@ const Card: React.FC<CardProps> = ({ item }) => {
   return (
     <>
       {item.map((data: User) => (
-        <div className="card-container" key={data.id}>
+        <section
+          className="card-container"
+          key={data.id}
+          aria-label={`info about ${data.name}`}
+          aria-labelledby="user-name"
+        >
           <div>
             <img src={data.avatar} alt={`${data.name} avatar profile`} />
             <div>
               <div>
-                <p className="name-container">{data.name}</p>
+                <p className="name-container" id="user-name">
+                  {data.name}
+                </p>
                 <p className="hour-container">
                   {formattedDay(data.created_at!)}
                 </p>
@@ -79,7 +86,7 @@ const Card: React.FC<CardProps> = ({ item }) => {
               )}
             </div>
           </div>
-        </div>
+        </section>
       ))}
     </>
   );

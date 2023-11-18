@@ -43,7 +43,7 @@ dialog {
   flex-direction: row;
   border-radius: 15px;
   justify-content: space-between;
-  background-color: grey;
+  background-color: #E8E8E8;
   padding: 4%;
   overflow: hidden;
 }
@@ -140,4 +140,14 @@ img {
   .container-modal {
     width: 80%
   }
+}
+
+a:hover,
+button:hover {
+  color: rgb(165, 70, 86);
+}
+
+a:focus,
+button:focus {
+  outline: 3px solid rgb(249, 113, 136);
 }

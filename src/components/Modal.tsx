@@ -19,21 +19,15 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose, title }) => {
 
   useEffect(() => {
     if (isOpen) {
-      const interactiveElements = modalRef.current?.querySelectorAll(
-        "input, select, button, a, [tabindex='-1']"
-      );
-      if (interactiveElements) {
-        const firstInteractiveElement = interactiveElements[0];
-        if (firstInteractiveElement instanceof HTMLElement) {
-          firstInteractiveElement.focus();
+      const interactiveElement =
+        modalRef.current?.querySelector("[tabindex='-1']");
+      if (interactiveElement) {
+        if (interactiveElement instanceof HTMLElement) {
+          interactiveElement.focus();
         }
       }
     }
   }, [isOpen]);
-
-  if (!isOpen) {
-    return null;
-  }
 
   return ReactDOM.createPortal(
     <dialog ref={modalRef} aria-labelledby="modal-id" aria-modal={true}>
