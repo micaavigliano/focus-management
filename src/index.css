@@ -1,11 +1,3 @@
-/* body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-} */
-
 @font-face {
   font-family: "RobotoMono";
   src: url("/font/RobotoMono-VariableFont_wght.ttf") format("truetype");
@@ -36,8 +28,8 @@ dialog {
 
 .container-modal {
   text-align: center;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
   background-color: white;
   margin: auto;
   padding: auto;
@@ -142,4 +134,10 @@ img {
   font-size: 0.75rem;
   color: #4a5568;
   margin-top: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .container-modal {
+    width: 80%
+  }
 }
