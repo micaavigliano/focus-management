@@ -17,6 +17,37 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose, title }) => {
     }
   };
 
+  const handleFocus = (event: KeyboardEvent) => {
+    const refElement = modalRef?.current;
+
+    if (refElement) {
+      const focusableElem = Array.from(
+        refElement.querySelectorAll<HTMLElement>(
+          'a, button, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => !el.hasAttribute("disabled")) as HTMLElement[];
+      console.log(focusableElem);
+
+      const firstFocusableElem = focusableElem[0];
+      const lastFocusableElem = focusableElem[focusableElem.length - 1];
+      const isTabPressed = event.key === "Tab";
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      if (event.shiftKey) {
+        if (document.activeElement === firstFocusableElem) {
+          lastFocusableElem.focus();
+          event.preventDefault();
+        }
+      } else if (document.activeElement === lastFocusableElem) {
+        firstFocusableElem.focus();
+        event.preventDefault();
+      }
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       const interactiveElement =
@@ -28,6 +59,15 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose, title }) => {
       }
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const currentRef = modalRef.current;
+    currentRef?.addEventListener("keydown", handleFocus);
+
+    return () => {
+      currentRef?.removeEventListener("keydown", handleFocus);
+    };
+  }, []);
 
   return ReactDOM.createPortal(
     <dialog ref={modalRef} aria-labelledby="modal-id" aria-modal={true}>
