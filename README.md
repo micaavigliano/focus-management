@@ -6,6 +6,6 @@
 
 Practice repo from the post: https://dev.to/micaavigliano/focus-management-como-mejorar-la-accesibilidad-y-usabilidad-de-nuestros-componentes-50nb
 
-website: [https://focus-management.vercel.app/](https://focus-management.netlify.app/)
+website: https://focus-management.netlify.app/
 
 by Mica Avigliano
